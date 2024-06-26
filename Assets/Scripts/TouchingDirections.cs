@@ -10,6 +10,7 @@ public class TouchingDirections : MonoBehaviour
     public float ceilingDistance = 0.05f;
 
     CapsuleCollider2D touchingCol;
+    Animator animator;
 
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
     RaycastHit2D[] wallHits = new RaycastHit2D[5];
@@ -22,7 +23,7 @@ public class TouchingDirections : MonoBehaviour
             return _isGrounded;
         } private set {
             _isGrounded = value;
-
+            animator.SetBool(AnimationStrings.isGrounded, value);
         } }
 
     [SerializeField]
@@ -37,7 +38,7 @@ public class TouchingDirections : MonoBehaviour
         private set
         {
             _isOnWall = value;
-
+            animator.SetBool(AnimationStrings.isOnWall, value);
         }
     }
 
@@ -54,13 +55,14 @@ public class TouchingDirections : MonoBehaviour
         private set
         {
             _isOnCeiling = value;
-
+            animator.SetBool(AnimationStrings.isOnCeiling, value);
         }
     }
 
     private void Awake()
     {
         touchingCol = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

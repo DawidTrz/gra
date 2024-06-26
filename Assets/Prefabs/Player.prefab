@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3894198816998551105}
   - component: {fileID: 4937520848158234536}
   - component: {fileID: 7609615949167774059}
+  - component: {fileID: 990940912348587247}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -129,6 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 200
+  jumpImpulse: 8
+  airWalkSpeed: 3
+  _isFacingRight: 1
 --- !u!114 &3894198816998551105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +162,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 597697191596257497}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: onMove
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -175,7 +179,19 @@ MonoBehaviour:
     m_ActionId: 882fdb54-36fb-4cb3-93c7-d310b15f66a2
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 597697191596257497}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 58ed681b-d601-48a4-9c7e-f30086e2c045
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -301,4 +317,29 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.05
+  wallDistance: 0.2
+  ceilingDistance: 0.05
   _isGrounded: 0
+  _isOnWall: 0
+  _isOnCeiling: 0
+--- !u!95 &990940912348587247
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724368141168482976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbabf2ef805edca44ae62f11b6bbb0c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
